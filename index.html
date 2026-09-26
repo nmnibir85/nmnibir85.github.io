@@ -1,0 +1,700 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nur Muhammad Nibir</title>
+<meta name="description" content="Portfolio of Nur Muhammad Nibir, Computer Science graduate working in AI, machine learning and IoT. Education, research, projects, awards and verified certificates.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..800&family=Instrument+Sans:wght@400..700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#F3F5F2; --surface:#FFFFFF; --surface-2:#E8EEEA;
+  --ink:#0E1A15; --ink-2:#33443D; --muted:#5E6F68; --line:#D5DDD8;
+  --accent:#0A6B4D; --accent-ink:#FFFFFF; --accent-soft:#DDEFE6;
+  --gold:#94650D; --gold-soft:#F5EAD0;
+  --chip:#18231F; --chip-edge:#0E1512; --chip-dot:#3A4A44; --pin:#C9A24A;
+  --silk:#EEF3F0; --silk-2:#9FB3AA;
+  --trace:color-mix(in srgb, var(--accent) 42%, transparent);
+  --stage:#0C1310; --stage-ink:#C9D6D0; --stage-muted:#8FA39A;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0A1310; --surface:#101C18; --surface-2:#172621;
+    --ink:#E4ECE7; --ink-2:#BCCAC3; --muted:#8C9E96; --line:#233730;
+    --accent:#45C796; --accent-ink:#04140E; --accent-soft:#11302A;
+    --gold:#E2B458; --gold-soft:#2C2412;
+    --chip:#1B2823; --chip-edge:#34463F; --chip-dot:#40524B; --pin:#D7B45E;
+    --stage:#050A08;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0A1310; --surface:#101C18; --surface-2:#172621;
+  --ink:#E4ECE7; --ink-2:#BCCAC3; --muted:#8C9E96; --line:#233730;
+  --accent:#45C796; --accent-ink:#04140E; --accent-soft:#11302A;
+  --gold:#E2B458; --gold-soft:#2C2412;
+  --chip:#1B2823; --chip-edge:#34463F; --chip-dot:#40524B; --pin:#D7B45E;
+  --stage:#050A08;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none !important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html:has(dialog[open]){overflow:hidden}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{margin:0;text-wrap:balance}
+p{margin:0}
+ul,ol{margin:0;padding:0;list-style:none}
+dl,dd{margin:0}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1120px;margin-inline:auto;padding-inline:clamp(16px,4vw,40px)}
+.when{font-family:var(--mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+svg.i{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* top bar */
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:color-mix(in srgb,var(--bg) 86%,transparent);-webkit-backdrop-filter:saturate(1.2) blur(12px);backdrop-filter:saturate(1.2) blur(12px);border-bottom:1px solid var(--line)}
+.topbar-in{display:flex;align-items:center;gap:20px;min-height:60px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
+.brand-mark{display:grid;place-items:center;width:34px;height:34px;border-radius:6px;background:var(--chip);color:var(--silk);font:800 11px/1 var(--display);font-stretch:125%;box-shadow:inset 0 0 0 2px var(--chip-edge)}
+.brand-name{font:650 15px/1.2 var(--display);font-stretch:105%}
+.nav{display:flex;gap:2px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a{padding:7px 10px;border-radius:6px;font-size:14px;font-weight:500;color:var(--ink-2);text-decoration:none;white-space:nowrap}
+.nav a:hover{background:var(--surface-2);color:var(--ink)}
+@media (max-width:900px){
+  .topbar-in{flex-wrap:wrap;gap:0 12px;padding-block:8px 2px;min-height:0}
+  .nav{order:3;width:100%;margin-left:0;padding-block:6px}
+  .nav a:first-child{padding-left:0}
+}
+
+/* hero */
+.hero{padding-block:clamp(40px,7vw,84px) 8px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,300px);gap:clamp(24px,5vw,64px);align-items:center}
+.eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
+.hero h1{font-family:var(--display);font-stretch:125%;font-weight:760;font-size:clamp(40px,6.4vw,80px);line-height:.98;letter-spacing:-.025em}
+.hero h1 .accent{color:var(--accent)}
+.lede{font-size:clamp(18px,2vw,21px);line-height:1.45;margin-top:24px;max-width:34em;font-weight:500}
+.summary{color:var(--ink-2);margin-top:14px;max-width:62ch}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:8px;border:1px solid var(--line);background:var(--surface);font-weight:600;font-size:15px;text-decoration:none;color:var(--ink);transition:border-color .15s,filter .15s}
+.btn:hover{border-color:var(--ink-2)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{filter:brightness(1.08)}
+.hero-art{margin:0;justify-self:end;width:100%;max-width:300px}
+@media (max-width:760px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero-art{order:-1;justify-self:start;max-width:170px;margin-bottom:-4px}
+}
+
+/* portrait */
+.hero-art img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;border-radius:14px;border:1px solid var(--line);background:var(--surface-2);box-shadow:0 1px 2px rgba(14,26,21,.06),0 18px 40px -12px rgba(14,26,21,.28)}
+
+/* key specs */
+.specs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:clamp(36px,5vw,60px)}
+.spec{background:var(--surface);padding:16px 18px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.spec dt{font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.spec dd{font-family:var(--display);font-stretch:110%;font-weight:680;font-size:19px;line-height:1.2;font-variant-numeric:tabular-nums}
+.spec dd small{display:block;font-family:var(--body);font-stretch:100%;font-weight:400;font-size:13px;color:var(--muted);margin-top:5px;line-height:1.35}
+@media (max-width:900px){
+  .specs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .spec:last-child{grid-column:1/-1}
+}
+
+/* sections */
+.section{padding-block:clamp(28px,4vw,44px);scroll-margin-top:64px}
+.sec-grid{display:grid;grid-template-columns:200px minmax(0,1fr);gap:clamp(20px,4vw,48px);border-top:1px solid var(--line);padding-top:clamp(24px,3.5vw,36px)}
+.sec-head{align-self:start;position:sticky;top:84px}
+.sec-head h2{font-family:var(--display);font-stretch:112%;font-weight:720;font-size:24px;line-height:1.15;letter-spacing:-.01em}
+.sec-meta{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:8px;line-height:1.55}
+@media (max-width:760px){
+  .sec-grid{grid-template-columns:1fr}
+  .sec-head{position:static}
+  .section{scroll-margin-top:100px}
+}
+.item-title{font-family:var(--display);font-stretch:104%;font-weight:650;font-size:18px;line-height:1.3}
+.item-sub{color:var(--ink-2);font-size:15px;margin-top:3px}
+.rule-list > li{padding-block:18px;border-bottom:1px dashed var(--line)}
+.rule-list > li:first-child{padding-top:0}
+.rule-list > li:last-child{border-bottom:0;padding-bottom:0}
+
+/* education */
+.edu{display:grid;grid-template-columns:150px minmax(0,1fr) auto;gap:6px 24px;align-items:baseline}
+.grade{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--accent);background:var(--accent-soft);padding:4px 10px;border-radius:999px;white-space:nowrap;font-variant-numeric:tabular-nums}
+@media (max-width:600px){
+  .edu{grid-template-columns:minmax(0,1fr) auto}
+  .edu .when{grid-column:1/-1}
+}
+
+/* skills */
+.skill-rows{display:flex;flex-direction:column;gap:18px}
+.skill-row{display:grid;grid-template-columns:150px minmax(0,1fr);gap:8px 20px;align-items:start}
+.skill-row h3{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-top:7px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips li{padding:5px 12px;border:1px solid var(--line);background:var(--surface);border-radius:6px;font-size:14.5px;font-weight:500}
+.chips.focus li{background:var(--accent-soft);border-color:transparent;color:var(--accent)}
+@media (max-width:600px){
+  .skill-row{grid-template-columns:1fr}
+  .skill-row h3{padding-top:0}
+}
+
+/* roles */
+.role{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 24px;align-items:baseline}
+.cert-link{margin-top:8px;font-size:14px}
+.cert-link svg{width:14px;height:14px}
+
+/* publications */
+.pub-venue{font-family:var(--mono);font-size:12.5px;color:var(--muted);display:flex;flex-wrap:wrap;gap:2px 14px}
+.pub-venue .kind{color:var(--accent);font-weight:500;text-transform:uppercase;letter-spacing:.06em}
+.pub h3{font-family:var(--display);font-stretch:104%;font-weight:660;font-size:19px;line-height:1.3;margin-top:8px}
+.pub .desc{color:var(--ink-2);margin-top:8px;max-width:68ch}
+.links{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:12px}
+.link{font-weight:600;font-size:14.5px;color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:6px;background:none;border:0;padding:0;cursor:pointer}
+.link:hover{text-decoration:underline;text-underline-offset:3px}
+.more{margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}
+
+/* projects */
+.projects{display:grid;gap:16px}
+.project{padding:24px;background:var(--surface);border:1px solid var(--line);border-radius:12px;display:grid;gap:10px}
+.project .tag{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.project h3{font-family:var(--display);font-stretch:108%;font-weight:700;font-size:21px;line-height:1.2}
+.project .subtitle{font-weight:600;color:var(--ink-2);font-size:15.5px;margin-top:-4px;line-height:1.4}
+.project .desc{color:var(--ink-2);max-width:68ch}
+.parts{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.parts li{font-family:var(--mono);font-size:12.5px;padding:3px 9px;border-radius:5px;background:var(--surface-2);color:var(--ink-2)}
+
+/* certificate rows */
+.cert-list{display:flex;flex-direction:column;gap:8px}
+.cert-row{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:4px 16px;align-items:center;width:100%;text-align:left;padding:14px 16px;border:1px solid var(--line);background:var(--surface);border-radius:10px;cursor:pointer;transition:border-color .15s,background-color .15s}
+.cert-row:hover{border-color:color-mix(in srgb,var(--accent) 55%,var(--line));background:color-mix(in srgb,var(--accent-soft) 40%,var(--surface))}
+.seal{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--gold-soft);color:var(--gold)}
+.seal svg{width:20px;height:20px}
+.cert-row:not([data-cat="award"]) .seal{background:var(--accent-soft);color:var(--accent)}
+.cr-text{display:flex;flex-direction:column;min-width:0}
+.cr-title{font-weight:650;font-size:16px;line-height:1.35}
+.cr-org{color:var(--ink-2);font-size:14.5px;line-height:1.4}
+.cr-issuer{color:var(--muted);font-size:13px;line-height:1.4;margin-top:2px}
+.cr-side{display:flex;flex-direction:column;align-items:flex-end;gap:4px;text-align:right}
+.cr-view{font-size:13px;font-weight:600;color:var(--accent);display:inline-flex;gap:6px;align-items:center;white-space:nowrap}
+.cr-view svg{width:14px;height:14px}
+@media (max-width:600px){
+  .cert-row{grid-template-columns:40px minmax(0,1fr);align-items:start}
+  .cr-side{grid-column:2;flex-direction:row;align-items:center;justify-content:space-between;text-align:left;margin-top:6px}
+}
+
+/* certificate gallery */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.filter{padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-size:14px;font-weight:600;cursor:pointer;color:var(--ink-2)}
+.filter span{font-family:var(--mono);font-weight:400;color:var(--muted);margin-left:6px;font-size:12.5px}
+.filter[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.filter[aria-pressed="true"] span{color:inherit;opacity:.7}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,210px),1fr));gap:16px}
+.cert-card{display:flex;flex-direction:column;text-align:left;padding:0;border:1px solid var(--line);background:var(--surface);border-radius:12px;overflow:hidden;cursor:pointer;transition:border-color .15s,transform .15s}
+.cert-card:hover{border-color:color-mix(in srgb,var(--accent) 55%,var(--line));transform:translateY(-2px)}
+.thumb{position:relative;display:block;aspect-ratio:1.414/1;max-width:100%;background:var(--surface-2);border-bottom:1px solid var(--line);overflow:hidden}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.thumb .ph{position:absolute;inset:10px;border:1px dashed color-mix(in srgb,var(--muted) 50%,transparent);border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--muted);font-size:12.5px;text-align:center;padding:8px}
+.thumb .ph svg{width:26px;height:26px;color:var(--gold)}
+.thumb:not([data-state="ok"]) img{display:none}
+.thumb[data-state="ok"] .ph{display:none}
+.thumb[data-state="loading"] .ph span{visibility:hidden}
+.cc-body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:3px}
+.cc-cat{font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.cc-title{font-weight:650;font-size:15.5px;line-height:1.35}
+.cc-org{font-size:13.5px;color:var(--ink-2);line-height:1.4}
+.cc-date{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:4px}
+
+/* contact */
+.contact-row{display:grid;grid-template-columns:120px minmax(0,1fr) auto;gap:4px 20px;align-items:center}
+.contact-row .lbl{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.contact-row .val{font-size:16px;font-weight:500;overflow-wrap:anywhere;text-decoration:none}
+.contact-row a.val:hover{color:var(--accent)}
+.copy{padding:6px 12px;border-radius:6px;border:1px solid var(--line);background:var(--surface);font-size:13px;font-weight:600;cursor:pointer;min-width:72px}
+.copy.done{color:var(--accent);border-color:var(--accent)}
+@media (max-width:600px){
+  .contact-row{grid-template-columns:minmax(0,1fr) auto}
+  .contact-row .lbl{grid-column:1/-1}
+}
+
+.foot{padding-block:40px 56px}
+.foot-in{border-top:1px solid var(--line);padding-top:20px;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;color:var(--muted);font-size:13.5px}
+
+/* certificate viewer */
+dialog#viewer{padding:0;border:0;border-radius:14px;background:var(--surface);color:var(--ink);width:min(1100px,calc(100% - 32px));max-width:none;max-height:calc(100dvh - 32px);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+dialog#viewer::backdrop{background:rgba(4,10,8,.74);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.v-shell{display:grid;grid-template-columns:minmax(0,1fr) 330px;max-height:calc(100dvh - 32px)}
+.v-stage{position:relative;background:var(--stage);display:grid;place-items:center;min-height:380px;padding:20px}
+.v-stage img{display:none;max-width:100%;max-height:calc(100dvh - 72px);object-fit:contain;border-radius:3px;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+.v-stage[data-state="ok"] img{display:block}
+.v-empty{display:none;flex-direction:column;align-items:center;gap:12px;text-align:center;color:var(--stage-ink);max-width:300px;padding:28px;border:1px dashed rgba(201,214,208,.28);border-radius:10px}
+.v-empty svg{width:36px;height:36px;color:#D7B45E}
+.v-empty span{color:var(--stage-muted);font-size:14px}
+.v-stage[data-state="missing"] .v-empty{display:flex}
+.v-spin{display:none;width:30px;height:30px;border-radius:50%;border:3px solid rgba(201,214,208,.2);border-top-color:var(--stage-ink);animation:spin .8s linear infinite}
+.v-stage[data-state="loading"] .v-spin{display:block}
+@keyframes spin{to{transform:rotate(360deg)}}
+.v-info{padding:20px 22px 22px;display:flex;flex-direction:column;gap:14px;overflow:auto;border-left:1px solid var(--line)}
+.v-top{display:flex;align-items:center;gap:10px}
+.v-cat{font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--gold);background:var(--gold-soft);padding:3px 8px;border-radius:4px}
+.v-count{font-family:var(--mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.icon-btn{margin-left:auto;display:grid;place-items:center;width:36px;height:36px;border-radius:8px;border:1px solid var(--line);background:var(--surface);cursor:pointer}
+.icon-btn:hover{background:var(--surface-2)}
+.v-info h3{font-family:var(--display);font-stretch:108%;font-weight:700;font-size:22px;line-height:1.2}
+.v-org{color:var(--ink-2);margin-top:-6px}
+.v-dl{display:flex;flex-direction:column;gap:10px;padding-block:12px;border-block:1px solid var(--line)}
+.v-dl div{display:grid;gap:1px}
+.v-dl dt{font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.v-dl dd{font-size:15px;font-weight:500}
+.v-note{color:var(--ink-2);font-size:15px}
+.v-nav{display:flex;gap:8px;margin-top:auto;padding-top:6px}
+.v-nav button{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:10px 12px;border-radius:8px;border:1px solid var(--line);background:var(--surface);font-weight:600;font-size:14px;cursor:pointer}
+.v-nav button:hover{background:var(--surface-2)}
+@media (max-width:820px){
+  .v-shell{grid-template-columns:1fr;overflow:auto}
+  .v-stage{min-height:220px;padding:14px}
+  .v-stage img{max-height:56dvh}
+  .v-info{border-left:0;border-top:1px solid var(--line)}
+}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none !important;animation:none !important}
+}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="#top" aria-label="Nur Muhammad Nibir, back to top">
+      <span class="brand-mark" aria-hidden="true">NMN</span>
+      <span class="brand-name">Nur Muhammad Nibir</span>
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+      <a href="#leadership">Leadership</a>
+      <a href="#research">Research</a>
+      <a href="#projects">Projects</a>
+      <a href="#awards">Awards</a>
+      <a href="#training">Training</a>
+      <a href="#volunteering">Volunteering</a>
+      <a href="#certificates">Certificates</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <p class="eyebrow">Computer Science Graduate · Dhaka, Bangladesh</p>
+        <h1>Nur Muhammad <span class="accent">Nibir</span></h1>
+        <p class="lede">AI, machine learning and IoT, with hands-on work that runs from sensor firmware to trained models.</p>
+        <p class="summary">I graduated in Computer Science and Engineering from Daffodil International University. My academic and practical work covers machine learning, embedded systems and IoT-based solutions, and I have served in IEEE student leadership. I enjoy putting technical skills to work in collaborative teams.</p>
+        <div class="actions">
+          <a class="btn primary" href="#certificates">View certificates</a>
+          <a class="btn" href="#contact">Get in touch</a>
+          <a class="btn" href="https://linkedin.com/in/nur-muhammad-nibir" target="_blank" rel="noopener">LinkedIn <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        </div>
+      </div>
+
+      <figure class="hero-art">
+        <img src="profile.jpg" alt="Portrait of Nur Muhammad Nibir" width="720" height="900">
+      </figure>
+    </div>
+
+    <div class="wrap">
+      <dl class="specs" aria-label="Key facts">
+        <div class="spec"><dt>Degree</dt><dd>B.Sc. in CSE<small>Daffodil International University, 2026</small></dd></div>
+        <div class="spec"><dt>CGPA</dt><dd>3.40 / 4.00<small>Undergraduate, Sep 2022 to Sep 2026</small></dd></div>
+        <div class="spec"><dt>HSC</dt><dd>GPA 5.00 / 5.00<small>Sristy College of Tangail</small></dd></div>
+        <div class="spec"><dt>Publications</dt><dd>2 papers<small>Data in Brief · IDAA 2025</small></dd></div>
+        <div class="spec"><dt>Top honour</dt><dd>National Champion<small>Bangladesh Innovation Fair 2026</small></dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section" id="education">
+    <div class="wrap sec-grid">
+      <header class="sec-head"><h2>Education</h2><p class="sec-meta">3 qualifications<br>Select to view the certificate</p></header>
+      <ol class="rule-list">
+        <li class="edu">
+          <span class="when">Sep 2022 – Sep 2026</span>
+          <div><h3 class="item-title">Bachelor of Science in Computer Science and Engineering</h3><p class="item-sub">Daffodil International University · Savar, Dhaka</p>
+            <button class="link cert-link" type="button" data-cert="bsc-cse">View certificate <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+          <span class="grade">CGPA 3.40/4.00</span>
+        </li>
+        <li class="edu">
+          <span class="when">Jul 2019 – Dec 2021</span>
+          <div><h3 class="item-title">Higher Secondary Certificate (HSC)</h3><p class="item-sub">Sristy College of Tangail · Tangail</p>
+            <button class="link cert-link" type="button" data-cert="hsc">View certificate <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+          <span class="grade">GPA 5.00/5.00</span>
+        </li>
+        <li class="edu">
+          <span class="when">Jan 2009 – Feb 2019</span>
+          <div><h3 class="item-title">Secondary School Certificate (SSC)</h3><p class="item-sub">Sristy Academic School · Tangail</p>
+            <button class="link cert-link" type="button" data-cert="ssc">View certificate <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+          <span class="grade">GPA 4.61/5.00</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="skills">
+    <div class="wrap sec-grid">
+      <header class="sec-head"><h2>Technical skills</h2><p class="sec-meta">Languages, tools and platforms</p></header>
+      <div class="skill-rows">
+        <div class="skill-row"><h3>Focus areas</h3><ul class="chips focus"><li>Artificial Intelligence</li><li>Machine Learning</li><li>Internet of Things</li><li>Embedded Systems</li><li>Web Development</li></ul></div>
+        <div class="skill-row"><h3>Programming</h3><ul class="chips"><li>Python</li><li>C</li><li>C++</li><li>Java</li><li>SQL</li></ul></div>
+        <div class="skill-row"><h3>Web</h3><ul class="chips"><li>HTML</li><li>CSS</li></ul></div>
+        <div class="skill-row"><h3>Tools</h3><ul class="chips"><li>Git</li><li>GitHub</li><li>VS Code</li><li>KiCad</li><li>EasyEDA</li></ul></div>
+        <div class="skill-row"><h3>Database</h3><ul class="chips"><li>MySQL</li></ul></div>
+        <div class="skill-row"><h3>Operating systems</h3><ul class="chips"><li>Windows</li><li>Linux</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="leadership">
+    <div class="wrap sec-grid">
+      <header class="sec-head"><h2>Leadership</h2><p class="sec-meta">IEEE and research center roles<br>Select to view the certificate</p></header>
+      <ul class="rule-list">
+        <li class="role"><div><h3 class="item-title">Secretary</h3><p class="item-sub">IEEE DIU Student Branch</p>
+          <button class="link cert-link" type="button" data-cert="ieee-diu-sb-secretary">View certificate <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div><span class="when">2026 – Present</span></li>
+        <li class="role"><div><h3 class="item-title">Treasurer</h3><p class="item-sub">IEEE DIU SB SIGHT Group</p>
+          <button class="link cert-link" type="button" data-cert="sight-treasurer">View certificate <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div><span class="when">2025 – 2026</span></li>
+        <li class="role"><div><h3 class="item-title">Executive Member</h3><p class="item-sub">Embedded System Research Center, DIU</p>
+          <button class="link cert-link" type="button" data-cert="esrc-executive">View certificate <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div><span class="when">2025 – 2026</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="research">
+    <div class="wrap sec-grid">
+      <header class="sec-head"><h2>Research</h2><p class="sec-meta">2 publications</p></header>
+      <div>
+        <ul class="rule-list">
+          <li class="pub">
+            <p class="pub-venue"><span class="kind">Journal article</span><span>Data in Brief</span><span>25 July 2025</span></p>
+            <h3>AI-MedLeafX: A Large-Scale Computer Vision Dataset for Medicinal Plant Diagnosis</h3>
+            <p class="desc">Co-developed a large-scale medicinal plant leaf dataset of more than 10,000 images for AI, machine learning and computer vision research in plant disease recognition and precision agriculture.</p>
+            <div class="links">
+              <a class="link" href="https://www.sciencedirect.com/science/article/pii/S2352340925006699" target="_blank" rel="noopener">Read the paper <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+              <a class="link" href="https://data.mendeley.com/datasets/zz7r5y4dc6/1" target="_blank" rel="noopener">Dataset on Mendeley Data <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+            </div>
+          </li>
+          <li class="pub">
+            <p class="pub-venue"><span class="kind">Conference paper</span><span>IDAA 2025</span><span>13 Dec 2025</span></p>
+            <h3>Deep Learning-Based Classification of Medicinal Plant Leaf Diseases Using CNN Architectures with Web-Based Deployment</h3>
+            <p class="desc">Presented at the International Conference on Intelligent Data Analysis and Applications (IDAA-2025).</p>
+            <div class="links">
+              <button class="link" type="button" data-cert="idaa-2025-paper">View presentation certificate <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            </div>
+          </li>
+        </ul>
+        <p class="more"><a class="link" href="https://www.researchgate.net/scientific-contributions/Nur-Muhammad-Nibir-2321185133" target="_blank" rel="noopener">All research works on ResearchGate <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="wrap sec-grid">
+      <header class="sec-head"><h2>Projects</h2><p class="sec-meta">3 selected builds</p></header>
+      <div class="projects">
+        <article class="project">
+          <p class="tag">Healthcare · AI · IoT</p>
+          <h3>Homepital Nexus</h3>
+          <p class="subtitle">AI-Enabled Smart Healthcare System</p>
+          <p class="desc">A home-based screening system that measures core vital signs at home and routes readings that cross safe limits to a connected clinic for triage, so fewer patients need a hospital visit for routine checks.</p>
+          <ul class="parts"><li>Vital-sign sensing</li><li>AI decision support</li><li>Remote triage</li></ul>
+        </article>
+        <article class="project">
+          <p class="tag">Healthcare · Wearable · ML</p>
+          <h3>SmartTherm</h3>
+          <p class="subtitle">IoT-Enabled Intelligent Fever Control System with Automated Cooling and Machine Learning Integration</p>
+          <p class="desc">A wearable health monitoring device that measures body temperature, SpO2 and heart rate, and drives an automatic cooling system.</p>
+          <ul class="parts"><li>MAX30102</li><li>ECG sensor</li><li>DS18B20</li><li>I²C</li><li>Automatic cooling</li><li>Machine learning</li></ul>
+        </article>
+        <article class="project">
+          <p class="tag">Agriculture · Embedded</p>
+          <h3>Smart Soil Fertility Analysis</h3>
+          <p class="subtitle">Soil Fertility Analysis and Fertilizer Recommendation System</p>
+          <p class="desc">A soil analysis system built on STM32 that reads NPK, moisture and pH sensors in real time to support fertilizer recommendations for precision agriculture.</p>
+          <ul class="parts"><li>STM32</li><li>NPK sensor</li><li>Soil moisture</li><li>pH sensor</li><li>SPI</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="awards">
+    <div class="wrap sec-grid">
+      <header class="sec-head"><h2>Awards &amp; recognition</h2><p class="sec-meta">6 entries<br>Select one to view the certificate</p></header>
+      <div class="cert-list" data-list="award"></div>
+    </div>
+  </section>
+
+  <section class="section" id="training">
+    <div class="wrap sec-grid">
+      <header class="sec-head"><h2>Training</h2><p class="sec-meta">4 courses<br>Select one to view the certificate</p></header>
+      <div class="cert-list" data-list="training"></div>
+    </div>
+  </section>
+
+  <section class="section" id="volunteering">
+    <div class="wrap sec-grid">
+      <header class="sec-head"><h2>Volunteering</h2><p class="sec-meta">4 events<br>Select one to view the certificate</p></header>
+      <div class="cert-list" data-list="volunteer"></div>
+    </div>
+  </section>
+
+  <section class="section" id="certificates">
+    <div class="wrap sec-grid">
+      <header class="sec-head"><h2>Certificates</h2><p class="sec-meta"><span id="cert-total">15</span> documents<br>Select any card to open it full size</p></header>
+      <div>
+        <div class="filters" role="group" aria-label="Filter certificates" id="filters"></div>
+        <div class="gallery" id="gallery"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="wrap sec-grid">
+      <header class="sec-head"><h2>Contact</h2><p class="sec-meta">Based in Dhaka, Bangladesh</p></header>
+      <ul class="rule-list">
+        <li class="contact-row"><span class="lbl">Email</span><a class="val" id="c-email" href="mailto:nibir22205101833@diu.edu.bd">nibir22205101833@diu.edu.bd</a><button class="copy" type="button" data-copy="nibir22205101833@diu.edu.bd" data-target="c-email">Copy</button></li>
+        <li class="contact-row"><span class="lbl">Phone</span><a class="val" id="c-phone" href="tel:+8801709264445">+880 1709 264445</a><button class="copy" type="button" data-copy="+8801709264445" data-target="c-phone">Copy</button></li>
+        <li class="contact-row"><span class="lbl">LinkedIn</span><a class="val" href="https://linkedin.com/in/nur-muhammad-nibir" target="_blank" rel="noopener">linkedin.com/in/nur-muhammad-nibir</a><span></span></li>
+        <li class="contact-row"><span class="lbl">Website</span><a class="val" href="https://nmnibir85.github.io/" target="_blank" rel="noopener">nmnibir85.github.io</a><span></span></li>
+        <li class="contact-row"><span class="lbl">Location</span><span class="val">Dhaka, Bangladesh</span><span></span></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <span>© 2026 Nur Muhammad Nibir</span>
+    <span>Updated September 2026</span>
+  </div>
+</footer>
+
+<dialog id="viewer" aria-labelledby="v-title">
+  <div class="v-shell">
+    <div class="v-stage" id="v-stage" data-state="loading">
+      <img id="v-img" alt="">
+      <div class="v-spin" aria-hidden="true"></div>
+      <div class="v-empty">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M8.6 13.9 7 22l5-3 5 3-1.6-8.1"/></svg>
+        <strong>Certificate image coming soon</strong>
+        <span>The scanned copy for this entry will be added shortly.</span>
+      </div>
+    </div>
+    <aside class="v-info">
+      <div class="v-top">
+        <span class="v-cat" id="v-cat"></span>
+        <span class="v-count" id="v-count"></span>
+        <button class="icon-btn" type="button" id="v-close" aria-label="Close certificate"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      </div>
+      <h3 id="v-title"></h3>
+      <p class="v-org" id="v-org"></p>
+      <dl class="v-dl" id="v-dl">
+        <div id="v-issuer-row"><dt>Issued by</dt><dd id="v-issuer"></dd></div>
+        <div id="v-date-row"><dt>Date</dt><dd id="v-date"></dd></div>
+      </dl>
+      <p class="v-note" id="v-note"></p>
+      <a class="link" id="v-open" href="#" target="_blank" rel="noopener">Open full size <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+      <div class="v-nav" id="v-nav">
+        <button type="button" id="v-prev"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>Previous</button>
+        <button type="button" id="v-next">Next<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+      </div>
+    </aside>
+  </div>
+</dialog>
+
+<script>
+/*
+  CERTIFICATES
+  Each entry loads its image from certificates/<id>.jpg unless "img" is set.
+  To add a certificate: save the image in the certificates folder with that
+  file name, or set img:'certificates/your-file.png' on the entry.
+*/
+const CERTS = [
+  {id:'bsc-cse', cat:'education', title:'B.Sc. in Computer Science and Engineering', org:'Daffodil International University', issuer:'', date:'Sep 2022 – Sep 2026', dateLabel:'Period', note:'CGPA 3.40 / 4.00'},
+  {id:'hsc', cat:'education', title:'Higher Secondary Certificate (HSC)', org:'Sristy College of Tangail', issuer:'', date:'Jul 2019 – Dec 2021', dateLabel:'Period', note:'GPA 5.00 / 5.00'},
+  {id:'ssc', cat:'education', title:'Secondary School Certificate (SSC)', org:'Sristy Academic School', issuer:'', date:'Jan 2009 – Feb 2019', dateLabel:'Period', note:'GPA 4.61 / 5.00'},
+
+  {id:'ieee-diu-sb-secretary', cat:'leadership', title:'Secretary', org:'IEEE DIU Student Branch', issuer:'', date:'2026 – Present', dateLabel:'Term'},
+  {id:'sight-treasurer', cat:'leadership', title:'Treasurer', org:'IEEE DIU SB SIGHT Group', issuer:'', date:'2025 – 2026', dateLabel:'Term'},
+  {id:'esrc-executive', cat:'leadership', title:'Executive Member', org:'Embedded System Research Center, DIU', issuer:'', date:'2025 – 2026', dateLabel:'Term'},
+
+  {id:'idaa-2025-paper', cat:'research', title:'Paper Presentation', org:'Deep Learning-Based Classification of Medicinal Plant Leaf Diseases Using CNN Architectures with Web-Based Deployment', issuer:'International Conference on Intelligent Data Analysis and Applications (IDAA-2025)', date:'13 Dec 2025'},
+
+  {id:'bif-2026', cat:'award', title:'National Champion', org:'Bangladesh Innovation Fair 2026', issuer:'Ministry of Science and Technology, Government of Bangladesh', date:'2026'},
+  {id:'research-recognition-2025', cat:'award', title:'Scholarly Publication Recognition', org:'Research recognition 2025', issuer:'Division of Research, Daffodil International University', date:'2025'},
+  {id:'bim-champion', cat:'award', title:'Champion, Project Showcasing', org:'International Conference on Big Data, IoT, and Machine Learning', issuer:'', date:''},
+  {id:'react-2026', cat:'award', title:'1st Runner-Up, Project Showcasing', org:'REACT National Project Showcasing 2026', issuer:'Southeast University', date:'2026'},
+  {id:'becithcon-2026', cat:'award', title:'1st Runner-Up, Project Showcasing', org:'5th IEEE BECITHCON 2026', issuer:'IUBAT', date:'2026'},
+  {id:'ndac-2025', cat:'award', title:'Invigilator', org:'Inter-University National Data Analysis Competition (NDAC) 2025', issuer:'', date:'2025'},
+
+  {id:'sqa', cat:'training', title:'Software Quality Assurance (SQA)', org:'Skill Jobs', issuer:'', date:''},
+  {id:'software-development', cat:'training', title:'Software Development', org:'Programming Hero', issuer:'', date:''},
+  {id:'firmware-development', cat:'training', title:'Firmware Development', org:'Embedded System Research Lab, Daffodil International University', issuer:'', date:''},
+  {id:'ms-office', cat:'training', title:'Microsoft Office Applications', org:'TTC, Tangail', issuer:'', date:''},
+
+  {id:'icadhi-2026', cat:'volunteer', title:'Organizing Secretary', org:'IEEE International Congress on AI & Digital Health Innovation (ICADHI 2026)', issuer:'', date:'15–16 June 2026'},
+  {id:'idaa-2025-volunteer', cat:'volunteer', title:'Volunteer', org:'International Conference on Intelligent Data Analysis and Applications (IDAA 2025)', issuer:'', date:'2025'},
+  {id:'data-visionary-2025', cat:'volunteer', title:'Supportive Organizer & Invigilator', org:'Data Visionary Contest 2025', issuer:'', date:'2025', note:'Coordinated event logistics and facilitated participant engagement.'},
+  {id:'bim-2023', cat:'volunteer', title:'Organizing Coordinator', org:'BIM Co-located Event 2023', issuer:'', date:'2023', note:'Assisted with event logistics and attendee engagement.'}
+];
+
+const CAT = {education:'Education', leadership:'Leadership', research:'Research', award:'Award', training:'Training', volunteer:'Volunteering'};
+const byId = Object.fromEntries(CERTS.map(c => [c.id, c]));
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+const SEAL = '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M8.6 13.9 7 22l5-3 5 3-1.6-8.1"/></svg>';
+const ARROW = '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+
+/* check which certificate images exist */
+CERTS.forEach(c => {
+  c.src = c.img || ('certificates/' + c.id + '.jpg');
+  c.status = 'loading';
+  const probe = new Image();
+  probe.onload = () => { c.status = 'ok'; syncState(c); };
+  probe.onerror = () => { c.status = 'missing'; syncState(c); };
+  probe.src = c.src;
+});
+
+function syncState(c){
+  document.querySelectorAll('[data-thumb="' + c.id + '"]').forEach(t => { t.dataset.state = c.status; });
+  if (dlg.open && seq[idx] === c.id) show();
+}
+
+/* section lists */
+function rowHTML(c){
+  return '<button class="cert-row" type="button" data-cert="' + c.id + '" data-cat="' + c.cat + '">' +
+    '<span class="seal">' + SEAL + '</span>' +
+    '<span class="cr-text"><span class="cr-title">' + esc(c.title) + '</span>' +
+      (c.org ? '<span class="cr-org">' + esc(c.org) + '</span>' : '') +
+      (c.issuer ? '<span class="cr-issuer">' + esc(c.issuer) + '</span>' : '') +
+    '</span>' +
+    '<span class="cr-side">' + (c.date ? '<span class="when">' + esc(c.date) + '</span>' : '<span></span>') +
+      '<span class="cr-view">View certificate ' + ARROW + '</span></span>' +
+  '</button>';
+}
+document.querySelectorAll('[data-list]').forEach(el => {
+  el.innerHTML = CERTS.filter(c => c.cat === el.dataset.list).map(rowHTML).join('');
+});
+
+/* gallery */
+let filter = 'all';
+const FILTERS = [['all','All'],['education','Education'],['leadership','Leadership'],['research','Research'],['award','Awards'],['training','Training'],['volunteer','Volunteering']];
+function visible(){ return CERTS.filter(c => filter === 'all' || c.cat === filter); }
+function renderFilters(){
+  $('#filters').innerHTML = FILTERS.map(([k, label]) => {
+    const n = k === 'all' ? CERTS.length : CERTS.filter(c => c.cat === k).length;
+    return '<button class="filter" type="button" data-filter="' + k + '" aria-pressed="' + (k === filter) + '">' + label + '<span>' + n + '</span></button>';
+  }).join('');
+}
+function renderGallery(){
+  $('#gallery').innerHTML = visible().map(c =>
+    '<button class="cert-card" type="button" data-cert="' + c.id + '" data-from="gallery">' +
+      '<span class="thumb" data-thumb="' + c.id + '" data-state="' + c.status + '">' +
+        '<img src="' + esc(c.src) + '" alt="" loading="lazy">' +
+        '<span class="ph">' + SEAL + '<span>Image coming soon</span></span>' +
+      '</span>' +
+      '<span class="cc-body"><span class="cc-cat">' + CAT[c.cat] + '</span>' +
+        '<span class="cc-title">' + esc(c.title) + '</span>' +
+        '<span class="cc-org">' + esc(c.org) + '</span>' +
+        (c.date ? '<span class="cc-date">' + esc(c.date) + '</span>' : '') +
+      '</span>' +
+    '</button>'
+  ).join('');
+}
+$('#filters').addEventListener('click', e => {
+  const b = e.target.closest('[data-filter]');
+  if (!b) return;
+  filter = b.dataset.filter;
+  renderFilters(); renderGallery();
+});
+$('#cert-total').textContent = CERTS.length;
+renderFilters(); renderGallery();
+
+/* viewer */
+const dlg = $('#viewer');
+let seq = CERTS.map(c => c.id), idx = 0;
+
+function setRow(rowSel, valSel, v){ $(valSel).textContent = v || ''; $(rowSel).hidden = !v; }
+function show(){
+  const c = byId[seq[idx]];
+  $('#v-cat').textContent = CAT[c.cat];
+  $('#v-count').textContent = (idx + 1) + ' / ' + seq.length;
+  $('#v-title').textContent = c.title;
+  $('#v-org').textContent = c.org || '';
+  $('#v-org').hidden = !c.org;
+  setRow('#v-issuer-row', '#v-issuer', c.issuer);
+  setRow('#v-date-row', '#v-date', c.date);
+  $('#v-date-row dt').textContent = c.dateLabel || 'Date';
+  $('#v-dl').hidden = !c.issuer && !c.date;
+  $('#v-note').textContent = c.note || '';
+  $('#v-note').hidden = !c.note;
+  const img = $('#v-img');
+  img.alt = 'Certificate: ' + c.title + (c.org ? ', ' + c.org : '');
+  if (c.status === 'ok') img.src = c.src; else img.removeAttribute('src');
+  $('#v-stage').dataset.state = c.status;
+  $('#v-open').hidden = c.status !== 'ok';
+  $('#v-open').href = c.src;
+  $('#v-nav').hidden = seq.length < 2;
+}
+function openViewer(id, list){
+  seq = list && list.length ? list : CERTS.map(c => c.id);
+  idx = Math.max(0, seq.indexOf(id));
+  show();
+  if (!dlg.open) dlg.showModal();
+}
+function step(d){ idx = (idx + d + seq.length) % seq.length; show(); }
+
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-cert]');
+  if (!t) return;
+  const list = t.dataset.from === 'gallery' ? visible().map(c => c.id) : CERTS.map(c => c.id);
+  openViewer(t.dataset.cert, list);
+});
+$('#v-close').addEventListener('click', () => dlg.close());
+$('#v-prev').addEventListener('click', () => step(-1));
+$('#v-next').addEventListener('click', () => step(1));
+dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+dlg.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight') { e.preventDefault(); step(1); }
+  else if (e.key === 'ArrowLeft') { e.preventDefault(); step(-1); }
+});
+
+/* deep link: #cert-<id> opens that certificate */
+const m = location.hash.match(/^#cert-(.+)$/);
+if (m && byId[m[1]]) openViewer(m[1]);
+
+/* copy buttons */
+document.querySelectorAll('.copy').forEach(b => {
+  b.addEventListener('click', () => {
+    const reset = () => setTimeout(() => { b.textContent = 'Copy'; b.classList.remove('done'); }, 1600);
+    const done = () => { b.textContent = 'Copied'; b.classList.add('done'); reset(); };
+    const fallback = () => {
+      const el = document.getElementById(b.dataset.target);
+      const r = document.createRange(); r.selectNodeContents(el);
+      const s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      b.textContent = 'Selected'; reset();
+    };
+    try { navigator.clipboard.writeText(b.dataset.copy).then(done, fallback); }
+    catch (err) { fallback(); }
+  });
+});
+</script>
+</body>
+</html>
