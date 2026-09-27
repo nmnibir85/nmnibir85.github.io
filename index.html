@@ -68,8 +68,9 @@ svg.i{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-widt
 .brand-name{font:650 15px/1.2 var(--display);font-stretch:105%}
 .nav{display:flex;gap:2px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
 .nav::-webkit-scrollbar{display:none}
-.nav a{padding:7px 10px;border-radius:6px;font-size:14px;font-weight:500;color:var(--ink-2);text-decoration:none;white-space:nowrap}
+.nav a{padding:7px 8px;border-radius:6px;font-size:14px;font-weight:500;color:var(--ink-2);text-decoration:none;white-space:nowrap}
 .nav a:hover{background:var(--surface-2);color:var(--ink)}
+@media (min-width:901px) and (max-width:1360px){.brand-name{display:none}}
 @media (max-width:900px){
   .topbar-in{flex-wrap:wrap;gap:0 12px;padding-block:8px 2px;min-height:0}
   .nav{order:3;width:100%;margin-left:0;padding-block:6px}
@@ -187,8 +188,30 @@ svg.i{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-widt
 .cr-view svg{width:14px;height:14px}
 @media (max-width:600px){
   .cert-row{grid-template-columns:40px minmax(0,1fr);align-items:start}
-  .cr-side{grid-column:2;flex-direction:row;align-items:center;justify-content:space-between;text-align:left;margin-top:6px}
+  .cr-side{grid-column:2;flex-direction:row;align-items:center;justify-content:space-between;text-align:left;margin-top:6px;flex-wrap:wrap;gap:4px 12px}
+  .cr-acts{justify-content:flex-start}
 }
+
+/* action links (certificate / image) */
+.acts{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:8px}
+.acts .cert-link{margin-top:0}
+.auto-hide:not(:has(> :not([hidden]))){display:none}
+.cr-acts{display:flex;flex-wrap:wrap;gap:4px 14px;justify-content:flex-end}
+.cr-act{font-size:13px;font-weight:600;color:var(--accent);display:inline-flex;gap:6px;align-items:center;white-space:nowrap;background:none;border:0;padding:0;cursor:pointer}
+.cr-act:hover{text-decoration:underline;text-underline-offset:3px}
+.cr-act svg{width:14px;height:14px}
+.cert-row:not(:has(.cr-act:not([hidden]))){cursor:default}
+.cert-row:not(:has(.cr-act:not([hidden]))):hover{border-color:var(--line);background:var(--surface)}
+
+/* image gallery */
+.photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,200px),1fr));gap:12px}
+.photo{position:relative;display:block;width:100%;padding:0;border:0;border-radius:10px;overflow:hidden;cursor:pointer;background:var(--surface-2);aspect-ratio:4/3;max-width:100%}
+.photo img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.photo:hover img{transform:scale(1.04)}
+.ph-cap{position:absolute;left:0;right:0;bottom:0;padding:32px 12px 10px;background:linear-gradient(rgba(5,12,9,0),rgba(5,12,9,.8));color:#fff;text-align:left;font-size:12.5px;line-height:1.35}
+.ph-cap b{display:block;font-weight:650;font-size:14px}
+.ph-cap span{opacity:.82}
+.v-cat.is-img{color:var(--accent);background:var(--accent-soft)}
 
 /* certificate gallery */
 .filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
@@ -287,6 +310,7 @@ dialog#viewer::backdrop{background:rgba(4,10,8,.74);-webkit-backdrop-filter:blur
       <a href="#training">Training</a>
       <a href="#volunteering">Volunteering</a>
       <a href="#certificates">Certificates</a>
+      <a href="#images" id="nav-images" hidden>Images</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -330,19 +354,19 @@ dialog#viewer::backdrop{background:rgba(4,10,8,.74);-webkit-backdrop-filter:blur
         <li class="edu">
           <span class="when">Sep 2022 – Sep 2026</span>
           <div><h3 class="item-title">Bachelor of Science in Computer Science and Engineering</h3><p class="item-sub">Daffodil International University · Savar, Dhaka</p>
-            <button class="link cert-link" type="button" data-cert="bsc-cse">View certificate <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+            <div class="acts auto-hide"><button class="link cert-link" type="button" data-cert="bsc-cse">View certificate <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button><button class="link cert-link" type="button" data-img="bsc-cse" hidden>View image <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div></div>
           <span class="grade">CGPA 3.40/4.00</span>
         </li>
         <li class="edu">
           <span class="when">Jul 2019 – Dec 2021</span>
           <div><h3 class="item-title">Higher Secondary Certificate (HSC)</h3><p class="item-sub">Sristy College of Tangail · Tangail</p>
-            <button class="link cert-link" type="button" data-cert="hsc">View certificate <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+            <div class="acts auto-hide"><button class="link cert-link" type="button" data-cert="hsc">View certificate <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button><button class="link cert-link" type="button" data-img="hsc" hidden>View image <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div></div>
           <span class="grade">GPA 5.00/5.00</span>
         </li>
         <li class="edu">
           <span class="when">Jan 2009 – Feb 2019</span>
           <div><h3 class="item-title">Secondary School Certificate (SSC)</h3><p class="item-sub">Sristy Academic School · Tangail</p>
-            <button class="link cert-link" type="button" data-cert="ssc">View certificate <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+            <div class="acts auto-hide"><button class="link cert-link" type="button" data-cert="ssc">View certificate <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button><button class="link cert-link" type="button" data-img="ssc" hidden>View image <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div></div>
           <span class="grade">GPA 4.61/5.00</span>
         </li>
       </ol>
@@ -368,11 +392,11 @@ dialog#viewer::backdrop{background:rgba(4,10,8,.74);-webkit-backdrop-filter:blur
       <header class="sec-head"><h2>Leadership</h2><p class="sec-meta">IEEE and research center roles<br>Select to view the certificate</p></header>
       <ul class="rule-list">
         <li class="role"><div><h3 class="item-title">Secretary</h3><p class="item-sub">IEEE DIU Student Branch</p>
-          <button class="link cert-link" type="button" data-cert="ieee-diu-sb-secretary">View certificate <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div><span class="when">2026 – Present</span></li>
+          <div class="acts auto-hide"><button class="link cert-link" type="button" data-cert="ieee-diu-sb-secretary">View certificate <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button><button class="link cert-link" type="button" data-img="ieee-diu-sb-secretary" hidden>View image <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div></div><span class="when">2026 – Present</span></li>
         <li class="role"><div><h3 class="item-title">Treasurer</h3><p class="item-sub">IEEE DIU SB SIGHT Group</p>
-          <button class="link cert-link" type="button" data-cert="sight-treasurer">View certificate <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div><span class="when">2025 – 2026</span></li>
+          <div class="acts auto-hide"><button class="link cert-link" type="button" data-cert="sight-treasurer">View certificate <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button><button class="link cert-link" type="button" data-img="sight-treasurer" hidden>View image <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div></div><span class="when">2025 – 2026</span></li>
         <li class="role"><div><h3 class="item-title">Executive Member</h3><p class="item-sub">Embedded System Research Center, DIU</p>
-          <button class="link cert-link" type="button" data-cert="esrc-executive">View certificate <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div><span class="when">2025 – 2026</span></li>
+          <div class="acts auto-hide"><button class="link cert-link" type="button" data-cert="esrc-executive">View certificate <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button><button class="link cert-link" type="button" data-img="esrc-executive" hidden>View image <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div></div><span class="when">2025 – 2026</span></li>
       </ul>
     </div>
   </section>
@@ -389,14 +413,16 @@ dialog#viewer::backdrop{background:rgba(4,10,8,.74);-webkit-backdrop-filter:blur
             <div class="links">
               <a class="link" href="https://www.sciencedirect.com/science/article/pii/S2352340925006699" target="_blank" rel="noopener">Read the paper <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
               <a class="link" href="https://data.mendeley.com/datasets/zz7r5y4dc6/1" target="_blank" rel="noopener">Dataset on Mendeley Data <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+              <button class="link" type="button" data-img="ai-medleafx" hidden>View image <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
             </div>
           </li>
           <li class="pub">
             <p class="pub-venue"><span class="kind">Conference paper</span><span>IDAA 2025</span><span>13 Dec 2025</span></p>
             <h3>Deep Learning-Based Classification of Medicinal Plant Leaf Diseases Using CNN Architectures with Web-Based Deployment</h3>
             <p class="desc">Presented at the International Conference on Intelligent Data Analysis and Applications (IDAA-2025).</p>
-            <div class="links">
+            <div class="links auto-hide">
               <button class="link" type="button" data-cert="idaa-2025-paper">View presentation certificate <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+              <button class="link" type="button" data-img="idaa-2025-paper" hidden>View image <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
             </div>
           </li>
         </ul>
@@ -415,6 +441,7 @@ dialog#viewer::backdrop{background:rgba(4,10,8,.74);-webkit-backdrop-filter:blur
           <p class="subtitle">AI-Enabled Smart Healthcare System</p>
           <p class="desc">A home-based screening system that measures core vital signs at home and routes readings that cross safe limits to a connected clinic for triage, so fewer patients need a hospital visit for routine checks.</p>
           <ul class="parts"><li>Vital-sign sensing</li><li>AI decision support</li><li>Remote triage</li></ul>
+          <div class="links auto-hide"><button class="link" type="button" data-img="homepital-nexus" hidden>View image <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
         </article>
         <article class="project">
           <p class="tag">Healthcare · Wearable · ML</p>
@@ -422,6 +449,7 @@ dialog#viewer::backdrop{background:rgba(4,10,8,.74);-webkit-backdrop-filter:blur
           <p class="subtitle">IoT-Enabled Intelligent Fever Control System with Automated Cooling and Machine Learning Integration</p>
           <p class="desc">A wearable health monitoring device that measures body temperature, SpO2 and heart rate, and drives an automatic cooling system.</p>
           <ul class="parts"><li>MAX30102</li><li>ECG sensor</li><li>DS18B20</li><li>I²C</li><li>Automatic cooling</li><li>Machine learning</li></ul>
+          <div class="links auto-hide"><button class="link" type="button" data-img="smarttherm" hidden>View image <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
         </article>
         <article class="project">
           <p class="tag">Agriculture · Embedded</p>
@@ -429,6 +457,7 @@ dialog#viewer::backdrop{background:rgba(4,10,8,.74);-webkit-backdrop-filter:blur
           <p class="subtitle">Soil Fertility Analysis and Fertilizer Recommendation System</p>
           <p class="desc">A soil analysis system built on STM32 that reads NPK, moisture and pH sensors in real time to support fertilizer recommendations for precision agriculture.</p>
           <ul class="parts"><li>STM32</li><li>NPK sensor</li><li>Soil moisture</li><li>pH sensor</li><li>SPI</li></ul>
+          <div class="links auto-hide"><button class="link" type="button" data-img="soil-fertility" hidden>View image <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
         </article>
       </div>
     </div>
@@ -461,6 +490,16 @@ dialog#viewer::backdrop{background:rgba(4,10,8,.74);-webkit-backdrop-filter:blur
       <div>
         <div class="filters" role="group" aria-label="Filter certificates" id="filters"></div>
         <div class="gallery" id="gallery"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="images" hidden>
+    <div class="wrap sec-grid">
+      <header class="sec-head"><h2>Images</h2><p class="sec-meta"><span id="img-total">0</span> photos<br>Select any photo to open it full size</p></header>
+      <div>
+        <div class="filters" role="group" aria-label="Filter images" id="img-filters"></div>
+        <div class="photo-grid" id="img-grid"></div>
       </div>
     </div>
   </section>
@@ -579,15 +618,18 @@ function syncState(c){
 
 /* section lists */
 function rowHTML(c){
-  return '<button class="cert-row" type="button" data-cert="' + c.id + '" data-cat="' + c.cat + '">' +
+  return '<div class="cert-row" data-row="' + esc(c.id) + '" data-cat="' + c.cat + '">' +
     '<span class="seal">' + SEAL + '</span>' +
     '<span class="cr-text"><span class="cr-title">' + esc(c.title) + '</span>' +
       (c.org ? '<span class="cr-org">' + esc(c.org) + '</span>' : '') +
       (c.issuer ? '<span class="cr-issuer">' + esc(c.issuer) + '</span>' : '') +
     '</span>' +
     '<span class="cr-side">' + (c.date ? '<span class="when">' + esc(c.date) + '</span>' : '<span></span>') +
-      '<span class="cr-view">View certificate ' + ARROW + '</span></span>' +
-  '</button>';
+      '<span class="cr-acts">' +
+        '<button class="cr-act" type="button" data-cert="' + esc(c.id) + '">View certificate ' + ARROW + '</button>' +
+        '<button class="cr-act" type="button" data-img="' + esc(c.id) + '" hidden>View image ' + ARROW + '</button>' +
+      '</span></span>' +
+  '</div>';
 }
 document.querySelectorAll('[data-list]').forEach(el => {
   el.innerHTML = CERTS.filter(c => c.cat === el.dataset.list).map(rowHTML).join('');
@@ -634,7 +676,8 @@ let seq = CERTS.map(c => c.id), idx = 0;
 function setRow(rowSel, valSel, v){ $(valSel).textContent = v || ''; $(rowSel).hidden = !v; }
 function show(){
   const c = byId[seq[idx]];
-  $('#v-cat').textContent = CAT[c.cat];
+  $('#v-cat').textContent = c.kind === 'image' ? 'Image' : CAT[c.cat];
+  $('#v-cat').classList.toggle('is-img', c.kind === 'image');
   $('#v-count').textContent = (idx + 1) + ' / ' + seq.length;
   $('#v-title').textContent = c.title;
   $('#v-org').textContent = c.org || '';
@@ -646,7 +689,7 @@ function show(){
   $('#v-note').textContent = c.note || '';
   $('#v-note').hidden = !c.note;
   const img = $('#v-img');
-  img.alt = 'Certificate: ' + c.title + (c.org ? ', ' + c.org : '');
+  img.alt = (c.kind === 'image' ? 'Image: ' : 'Certificate: ') + c.title + (c.org ? ', ' + c.org : '');
   if (c.status === 'ok') img.src = c.src; else img.removeAttribute('src');
   $('#v-stage').dataset.state = c.status;
   $('#v-open').hidden = c.status !== 'ok';
@@ -740,6 +783,79 @@ document.querySelectorAll('.copy').forEach(b => {
   let timer;
   syncState = function (c) { syncOriginal(c); clearTimeout(timer); timer = setTimeout(refresh, 60); };
   refresh();
+})();
+
+/* ===== Images: put photos in the "images" folder as <id>.jpg, <id>-2.jpg, <id>-3.jpg ... ===== */
+(function () {
+  const MAX = 12;
+  const EXTRA = [
+    {id: 'ai-medleafx', cat: 'research', title: 'AI-MedLeafX Dataset', org: 'Data in Brief', date: '2025'},
+    {id: 'homepital-nexus', cat: 'project', title: 'Homepital Nexus', org: 'AI-Enabled Smart Healthcare System', date: ''},
+    {id: 'smarttherm', cat: 'project', title: 'SmartTherm', org: 'IoT-Enabled Intelligent Fever Control System', date: ''},
+    {id: 'soil-fertility', cat: 'project', title: 'Smart Soil Fertility Analysis', org: 'Fertilizer Recommendation System', date: ''}
+  ];
+  const LABEL = {education: 'Education', leadership: 'Leadership', research: 'Research', project: 'Projects', award: 'Awards', training: 'Training', volunteer: 'Volunteering'};
+  const ORDER = ['education', 'leadership', 'research', 'project', 'award', 'training', 'volunteer'];
+  const parts = CERTS.map(c => ({id: c.id, cat: c.cat, title: c.title, org: c.org, date: c.date, dateLabel: c.dateLabel})).concat(EXTRA);
+  const found = {};
+  let imgFilter = 'all', timer;
+
+  function probe(p, n) {
+    const src = 'images/' + p.id + (n === 1 ? '' : '-' + n) + '.jpg';
+    const im = new Image();
+    im.onload = () => {
+      const key = 'img-' + p.id + '-' + n;
+      byId[key] = {id: key, kind: 'image', cat: p.cat, title: p.title, org: p.org, issuer: '', date: p.date, dateLabel: p.dateLabel, note: '', src: src, status: 'ok'};
+      (found[p.id] = found[p.id] || []).push(key);
+      clearTimeout(timer); timer = setTimeout(render, 80);
+      if (n < MAX) probe(p, n + 1);
+    };
+    im.src = src;
+  }
+  parts.forEach(p => probe(p, 1));
+
+  function allKeys() { return parts.flatMap(p => found[p.id] || []); }
+
+  function render() {
+    parts.forEach(p => {
+      const keys = found[p.id] || [];
+      keys.forEach((k, i) => { byId[k].note = keys.length > 1 ? 'Photo ' + (i + 1) + ' of ' + keys.length : ''; });
+    });
+    document.querySelectorAll('[data-img]').forEach(b => {
+      const n = (found[b.dataset.img] || []).length;
+      b.hidden = !n;
+      if (n && b.firstChild) b.firstChild.nodeValue = n > 1 ? 'View images (' + n + ') ' : 'View image ';
+    });
+    const keys = allKeys();
+    $('#images').hidden = !keys.length;
+    $('#nav-images').hidden = !keys.length;
+    $('#img-total').textContent = keys.length;
+    const cats = ORDER.filter(k => keys.some(x => byId[x].cat === k));
+    if (imgFilter !== 'all' && !cats.includes(imgFilter)) imgFilter = 'all';
+    $('#img-filters').hidden = cats.length < 2;
+    $('#img-filters').innerHTML = [['all', 'All']].concat(cats.map(k => [k, LABEL[k]])).map(([k, label]) => {
+      const n = k === 'all' ? keys.length : keys.filter(x => byId[x].cat === k).length;
+      return '<button class="filter" type="button" data-img-filter="' + k + '" aria-pressed="' + (k === imgFilter) + '">' + label + '<span>' + n + '</span></button>';
+    }).join('');
+    $('#img-grid').innerHTML = keys.filter(k => imgFilter === 'all' || byId[k].cat === imgFilter).map(k => {
+      const it = byId[k];
+      return '<button class="photo" type="button" data-img-key="' + k + '">' +
+        '<img src="' + esc(it.src) + '" alt="' + esc(it.title) + '" loading="lazy">' +
+        '<span class="ph-cap"><b>' + esc(it.title) + '</b><span>' + esc(LABEL[it.cat] || '') + '</span></span></button>';
+    }).join('');
+  }
+
+  document.addEventListener('click', e => {
+    const f = e.target.closest('[data-img-filter]');
+    if (f) { imgFilter = f.dataset.imgFilter; render(); return; }
+    const g = e.target.closest('[data-img-key]');
+    if (g) { openViewer(g.dataset.imgKey, [...document.querySelectorAll('#img-grid [data-img-key]')].map(x => x.dataset.imgKey)); return; }
+    const b = e.target.closest('[data-img]');
+    if (b) { const keys = found[b.dataset.img] || []; if (keys.length) openViewer(keys[0], keys); return; }
+    if (e.target.closest('button, a')) return;
+    const row = e.target.closest('.cert-row');
+    if (row) { const act = row.querySelector('.cr-act:not([hidden])'); if (act) act.click(); }
+  });
 })();
 </script>
 </body>
