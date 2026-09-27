@@ -695,6 +695,52 @@ document.querySelectorAll('.copy').forEach(b => {
     catch (err) { fallback(); }
   });
 });
+
+/* ===== Show "View certificate" only when the image has been uploaded ===== */
+(function () {
+  const has = c => c && c.status === 'ok';
+  const css = document.createElement('style');
+  css.textContent = '.cert-row:disabled{cursor:default}.cert-row:disabled:hover{border-color:var(--line);background:var(--surface)}';
+  document.head.appendChild(css);
+
+  visible = function () { return CERTS.filter(c => has(c) && (filter === 'all' || c.cat === filter)); };
+  renderFilters = function () {
+    const ready = CERTS.filter(has);
+    if (filter !== 'all' && !ready.some(c => c.cat === filter)) filter = 'all';
+    $('#filters').innerHTML = FILTERS.filter(([k]) => k === 'all' || ready.some(c => c.cat === k)).map(([k, label]) => {
+      const n = k === 'all' ? ready.length : ready.filter(c => c.cat === k).length;
+      return '<button class="filter" type="button" data-filter="' + k + '" aria-pressed="' + (k === filter) + '">' + label + '<span>' + n + '</span></button>';
+    }).join('');
+  };
+  const openOriginal = openViewer;
+  openViewer = function (id, list) {
+    if (!has(byId[id])) return;
+    openOriginal(id, (list || CERTS.map(c => c.id)).filter(x => has(byId[x])));
+  };
+
+  function refresh() {
+    CERTS.forEach(c => {
+      document.querySelectorAll('[data-cert="' + c.id + '"]').forEach(el => {
+        if (el.classList.contains('cert-row')) {
+          el.disabled = !has(c);
+          const v = el.querySelector('.cr-view');
+          if (v) v.hidden = !has(c);
+        } else if (!el.classList.contains('cert-card')) {
+          el.hidden = !has(c);
+        }
+      });
+    });
+    renderFilters();
+    renderGallery();
+    const n = CERTS.filter(has).length;
+    $('#cert-total').textContent = n;
+    if (!n) $('#gallery').innerHTML = '<p class="item-sub">Certificates will be added soon.</p>';
+  }
+  const syncOriginal = syncState;
+  let timer;
+  syncState = function (c) { syncOriginal(c); clearTimeout(timer); timer = setTimeout(refresh, 60); };
+  refresh();
+})();
 </script>
 </body>
 </html>
