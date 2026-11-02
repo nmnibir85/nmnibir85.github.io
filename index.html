@@ -172,6 +172,17 @@ svg.i{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-widt
 .parts{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
 .parts li{font-family:var(--mono);font-size:12.5px;padding:3px 9px;border-radius:5px;background:var(--surface-2);color:var(--ink-2)}
 
+  /* thesis */
+.thesis{display:grid;gap:16px}
+.thesis{padding:24px;background:var(--surface);border:1px solid var(--line);border-radius:12px;display:grid;gap:10px}
+.thesis .tag{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.thesis h3{font-family:var(--display);font-stretch:108%;font-weight:700;font-size:21px;line-height:1.2}
+.thesis .subtitle{font-weight:600;color:var(--ink-2);font-size:15.5px;margin-top:-4px;line-height:1.4}
+.thesis .desc{color:var(--ink-2);max-width:68ch}
+.parts{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.parts li{font-family:var(--mono);font-size:12.5px;padding:3px 9px;border-radius:5px;background:var(--surface-2);color:var(--ink-2)}
+
+
 /* certificate rows */
 .cert-list{display:flex;flex-direction:column;gap:8px}
 .cert-row{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:4px 16px;align-items:center;width:100%;text-align:left;padding:14px 16px;border:1px solid var(--line);background:var(--surface);border-radius:10px;cursor:pointer;transition:border-color .15s,background-color .15s}
@@ -464,6 +475,23 @@ dialog#viewer::backdrop{background:rgba(4,10,8,.74);-webkit-backdrop-filter:blur
     </div>
   </section>
 
+  <section class="section" id="thesis">
+    <div class="wrap sec-grid">
+      <header class="sec-head"><h2>Thesis</h2><p class="sec-meta">2 selected builds</p></header>
+      <div class="thesis">
+        <article class="thesis">
+          <p class="tag">EDUCATION · RASPBERRY PI · OFFLINE INFRASTRUCTURE</p>
+          <h3>Learn4All: Raspberry Pi-Powered Offline Learning Infrastructure for Indigenous Com
+          munities — IEEE Tech4Good Grant– USD 5,534 (2026)</h3>
+          <p class="subtitle"> Learn4All Project– IEEE DIU SB SIGHT Group</p>
+          <p class="desc">Co-developed a Raspberry Pi-powered offline learning infrastructure to bridge the digital divide and bring quality education to indigenous communities, awarded the IEEE Tech4Good Grant.</p>
+          <ul class="parts"><li>Offline Access to Quality Education</li><li>Raspberry pi Powerd Infrastructure</li><li>Empowering Inedgenious Communities/li></ul>
+          <div class="links auto-hide"><button class="link" type="button" data-img="thesisi" hidden>View image <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button><button class="link" type="button" data-vid="thesisi" hidden>View video <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+        </article>
+      </div>
+    </div>
+  </section>
+  
   <section class="section" id="awards">
     <div class="wrap sec-grid">
       <header class="sec-head"><h2>Awards &amp; recognition</h2><p class="sec-meta">6 entries<br>Select one to view the certificate</p></header>
@@ -815,7 +843,7 @@ const MEDIA_PARTS = CERTS.map(c => ({id: c.id, cat: c.cat, title: c.title, org: 
   {id: 'ai-medleafx', cat: 'research', title: 'AI-MedLeafX Dataset', org: 'Data in Brief', date: '2025'},
   {id: 'learn4all', cat: 'project', title: 'learn4all', org: 'Learn4All Project– IEEE DIU SB SIGHT Group', date: ''},
   {id: 'homepital-nexus', cat: 'project', title: 'Homepital Nexus', org: 'AI-Enabled Smart Healthcare System', date: ''},
-  {id: 'smarttherm', cat: 'project', title: 'SmartTherm', org: 'IoT-Enabled Intelligent Fever Control System', date: ''}
+  {id: 'smarttherm', cat: 'thesis', title: 'SmartTherm', org: 'IoT-Enabled Intelligent Fever Control System', date: ''}
 ]);
 const MEDIA_LABEL = {education: 'Education', leadership: 'Leadership', research: 'Research', project: 'Projects', award: 'Awards', training: 'Training', volunteer: 'Volunteering'};
 const MEDIA_ORDER = ['education', 'leadership', 'research', 'project', 'award', 'training', 'volunteer'];
