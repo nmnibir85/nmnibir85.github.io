@@ -96,35 +96,8 @@ svg.i{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-widt
   .hero-art{order:-1;justify-self:start;max-width:170px;margin-bottom:-4px}
 }
 
-/* portrait & video background styling */
-.hero-art {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  aspect-ratio: 4/5;
-  border-radius: 14px;
-  border: 1px solid var(--line);
-  background: var(--surface-2);
-  box-shadow: 0 1px 2px rgba(14,26,21,.06), 0 18px 40px -12px rgba(14,26,21,.28);
-}
-.hero-art video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 1;
-}
-.hero-art img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 20%;
-  position: relative;
-  z-index: 2;
-  background: transparent;
-}
+/* portrait */
+.hero-art img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;border-radius:14px;border:1px solid var(--line);background:var(--surface-2);box-shadow:0 1px 2px rgba(14,26,21,.06),0 18px 40px -12px rgba(14,26,21,.28)}
 
 /* key specs */
 .specs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:clamp(36px,5vw,60px)}
@@ -370,7 +343,7 @@ dialog#viewer::backdrop{background:rgba(4,10,8,.74);-webkit-backdrop-filter:blur
         <p class="eyebrow">Computer Science Graduate · Dhaka, Bangladesh</p>
         <h1>Nur Muhammad <span class="accent">Nibir</span></h1>
         <p class="lede">AI, machine learning and IoT, with hands-on work that runs from sensor firmware to trained models.</p>
-        <p class="summary">I graduated in Computer Science and Engineering from Daffodil International University. My academic and practical work covers machine learning, embedded systems and IoT-based solutions, and I have served in IEEE student leadership.National Champion at the Bangladesh Innovation Fair 2026 with a healthcare IoT project. I enjoy putting technical skills to work in collaborative teams.</p>
+        <p class="summary">I graduated in Computer Science and Engineering from Daffodil International University. My academic and practical work covers machine learning, embedded systems and IoT-based solutions, and I have served in IEEE student leadership.I graduated in Computer Science and Engineering from Daffodil International University. My academic and practical work covers machine learning, embedded systems and IoT-based solutions, and I have served in IEEE student leadership.National Champion at the Bangladesh Innovation Fair 2026 with a healthcare IoT project. I enjoy putting technical skills to work in collaborative teams.</p>
         <div class="actions">
           <a class="btn primary" href="#certificates">View certificates</a>
           <a class="btn" href="#contact">Get in touch</a>
@@ -379,10 +352,6 @@ dialog#viewer::backdrop{background:rgba(4,10,8,.74);-webkit-backdrop-filter:blur
       </div>
 
       <figure class="hero-art">
-       <video autoplay muted loop playsinline>
-  <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
-</video>
-        <!-- Samner profile picture -->
         <img src="profile.jpg" alt="Portrait of Nur Muhammad Nibir" width="720" height="900">
       </figure>
     </div>
@@ -482,7 +451,7 @@ dialog#viewer::backdrop{background:rgba(4,10,8,.74);-webkit-backdrop-filter:blur
           munities — IEEE Tech4Good Grant– USD 5,534 (2026)</h3>
           <p class="subtitle"> Learn4All Project– IEEE DIU SB SIGHT Group</p>
           <p class="desc">Co-developed a Raspberry Pi-powered offline learning infrastructure to bridge the digital divide and bring quality education to indigenous communities, awarded the IEEE Tech4Good Grant.</p>
-          <ul class="parts"><li>Offline Access to Quality Education</li><li>Raspberry pi Powerd Infrastructure</li><li>Empowering Inedgenious Communities</li></ul>
+          <ul class="parts"><li>Offline Access to Quality Education</li><li>Raspberry pi Powerd Infrastructure</li><li>Empowering Inedgenious Communities/li></ul>
           <div class="links auto-hide"><button class="link" type="button" data-img="learn4all" hidden>View image <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button><button class="link" type="button" data-vid="learn4all" hidden>View video <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
         </article>
         <article class="project">
